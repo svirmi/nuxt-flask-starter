@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - './frontend:/usr/src/app'
+    ports:
+      - 3008:3000
+    command: "yarn start -H 0.0.0.0"
+
+  nginx:
+    image: nginx:stable
+    ports:
+      - 8080:8080  # http://0.0.0.0:8080/ in the browser
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - frontend
+
