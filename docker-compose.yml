@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   frontend:
     build:
       context: ./frontend
@@ -11,11 +10,25 @@ services:
     ports:
       - 3008:3000
     command: "yarn start -H 0.0.0.0"
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - './api:/usr/src/app'
+    ports:
+      - 5002:5000 # http://0.0.0.0:8080/api API response in the browser
+    environment:
+      - FLASK_CONFIG=development
+      - FLASK_ENV=development
 
   nginx:
     image: nginx:stable
     ports:
-      - 8080:8080  # http://0.0.0.0:8080/ in the browser
+      - 8080:8080  # http://0.0.0.0:8080/ frontend in the browser
     volumes:
       - ./nginx:/etc/nginx/conf.d
     depends_on:
