@@ -2,6 +2,11 @@
 
 > Nuxt.js project
 
+## Useful command:
+```bash
+docker run -it --rm -p 8000:8000 -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app node:12 /bin/bash
+```
+
 ## Build Setup
 
 ``` bash
