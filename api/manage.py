@@ -11,7 +11,7 @@ class Product(Resource):
             'product' : [
                 "Product 1",
                 "Product 2",
-                "Product 333"
+                "Product 3"
             ]
         }
 api.add_resource(Product, '/api')
