@@ -8,3 +8,6 @@ docker-compose up -d
 
 ##### http://0.0.0.0:8080/ - frontend
 ##### http://0.0.0.0:8080/api - API response
+
+##### Inspired by https://github.com/martindavid/flask-react-docker-app
+
